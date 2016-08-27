@@ -1,0 +1,61 @@
+{
+	"rat":
+	{
+		"name":"Ratte",
+		"max_hp":10,
+		"atk":1,
+		"def":0,
+		"droprate":0.7,
+		"loot":
+		[
+			"lemon","lemon","lemon",
+			"lemon","lemon","lemon",
+			"pepper","pepper","pepper",
+			"pepper","pepper","pepper"
+		]
+	},
+	"white_rat":
+	{
+		"name":"Albino Ratte",
+		"max_hp":10,
+		"atk":1,
+		"def":1,
+		"droprate":0.65,
+		"loot":
+		[
+			"lemon","lemon","lemon",
+			"lemon","pepper","pepper",
+			"pepper","pepper","sugar",
+			"sugar","duc","stan"
+		]
+	},
+	"rat_deamon":
+	{
+		"name":"besessene Ratte",
+		"max_hp":20,
+		"atk":2,
+		"def":1,
+		"droprate":0.5,
+		"loot":
+		[
+			"lemon","lemon","lemon",
+			"pepper","pepper","pepper",
+			"sugar","sugar","stan",
+			"duc","duc","stan"
+		]
+	},
+	"goblin":
+	{
+		"name":"Goblin",
+		"max_hp":20,
+		"atk":2,
+		"def":0
+	},
+	"goblin_king":
+	{
+		"name":"Goblin König",
+		"max_hp":40,
+		"atk":2,
+		"def":1
+	}
+}

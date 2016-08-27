@@ -1,0 +1,69 @@
+<div class="container">	
+	<ul class="nav nav-tabs">
+		<li class="active"><a ng-click="page='event'">Events</a></li>
+		<li><a ng-click="page='pinboard'">Pinnwand</a></li>
+		<li><a ng-click="page='chat'">Chat</a></li>
+	</ul>
+	<div ng-hide="page!='event'">
+		<div class="panel panel-orange">
+			<div class="panel-heading orange"><b>Der Zauberer im TNF-Turm</b></div>
+			<div class="panel-body">
+				<p>Ein Zauberer haust im TNF-Turm, es wird Zeit ihn von dort zu vertreiben</p>
+				<p>Dauer: ca. 20 Minuten</p>
+				<p>Empfohlenes Level: 5</p>
+				<p>Bezahlung: 20G</p>
+				<p><a class="btn orange">Annehmen</a></p>
+			</div>
+			<div class="panel-footer orange">
+				<a data-toggle="collapse" data-target="#quest_11234_comments">
+					2 Kommentare
+				</a> 
+			</div>
+			<div class="panel-body collapse" id="quest_11234_comments">
+				<p>
+					<b>Kommentar verfassen</b>
+					<textarea></textarea> <a class="btn orange">Absenden</a>
+				</p>
+				<p>
+					<b>RandomPlayer234</b><br>
+					Ein netter kleiner Zeitvertreib, eigent sich hervorragend während man Übungszettel macht.
+				</p>
+				<p>
+					<b>RandomPlayer093</b><br>
+					Mit einer Hand voll Heiltränke oder einem Heiler kann man die Quest auch auf Level 3 schaffen.
+				</p>
+			</div>
+		</div>
+		<div class="panel panel-orange">
+			<div class="panel-heading orange"><b>[DAILY] Koboldplage in der Bibiliothek</b></div>
+			<div class="panel-body">
+				<p>Die lästigen Kobolde treiben wieder in der Biblitothek ihr Unwesen.</p>
+				<p>Dauer: ca. 5 Minuten</p>
+				<p>Empfohlenes Level: 2</p>
+				<p>Bezahlung: 5G</p>
+				<p><a class="btn orange">Annehmen</a></p>
+			</div>
+			<div class="panel-footer orange">
+				<a data-toggle="collapse" data-target="#quest_11235_comments">
+					1 Kommentare
+				</a> 
+			</div>
+			<div class="panel-body collapse" id="quest_11235_comments">
+				<p>
+					<b>Kommentar verfassen</b>
+					<textarea></textarea> <a class="btn orange">Absenden</a>
+				</p>
+				<p>
+					<b>RandomPlayer332</b><br>
+					Reinstes Grindfest,aber wenn man eh schon in der Bibliothek ist, warum nicht?
+				</p>
+			</div>
+		</div>
+	</div>
+	<div class="jumbotron orange" ng-hide="page!='pinboard'">
+		<p> Platzhalter für Pinnwand </p>
+	</div>
+	<div class="jumbotron orange" ng-hide="page!='chat'">
+		<p> Platzhalter für Chat </p>
+	</div>
+</div>

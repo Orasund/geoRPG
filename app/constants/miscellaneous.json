@@ -1,0 +1,29 @@
+{
+  "lemon":
+  {
+    "name":"Zitrone",
+    "price":1
+  },
+  "pepper":
+  {
+    "name":"Pfeffer",
+    "price":1
+  },
+  "sugar":
+  {
+    "name":"Zucker",
+    "price":1
+  },
+  "duc":
+  {
+    "name":"#7 DUC",
+    "desc":"Alchemische Substanz die in der richtigen Dosis die HP erhöht.",
+    "price":1
+  },
+  "stan":
+  {
+    "name":"#6 STAN",
+    "desc":"Alchemische Substanz die in der richtigen Dosis die SP erhöht.",
+    "price":1
+  }
+}

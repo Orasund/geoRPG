@@ -1,0 +1,198 @@
+<div class="container">	
+	<ul class="nav nav-tabs" ng-show="player.BattleId == null">
+		<li ng-class="{active:page=='fighting'}"><a ng-click="page='fighting'">Kämpfen</a></li>
+		<li ng-class="{active:page=='liga'}"><a ng-click="page='liga'">Liga</a></li>
+		<li ng-class="{active:page=='chat'}"><a ng-click="page='chat'">Chat</a></li>
+	</ul>
+	<div ng-hide="page!='fighting'">
+		<div ng-show="player.BattleId == null">
+			<div class="row">
+				<div class="col-xs-{{12/party.length}}" ng-repeat="x in party">
+					<div style="margin:auto;width:80px;">
+						<img src="{{x.class}}_big.png"></img>
+						<p>
+							[LV {{x.lv}}]<br>
+							<b>{{x.name}}</b>
+						</p>
+					</div>
+					<div class="progress">
+						<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{(100*x.hp)/x.max_hp}}"
+				aria-valuemin="0" aria-valuemax="100" style="width:{{(100*x.hp)/x.max_hp}}%">
+						{{x.hp}} von {{x.max_hp}}
+						</div>
+					</div>
+					<div class="progress">
+						<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="{{(100*x.sp)/x.max_sp}}"
+				aria-valuemin="0" aria-valuemax="100" style="width:{{(100*x.sp)/x.max_sp}}%">
+						{{x.sp}} von {{x.max_sp}}
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div 
+					class="col-xs-2" 
+					ng-repeat="x in consumables track by $index"
+					ng-click="useConsumable(x.id)"
+				>
+					<p><img src="img/item/{{x.type}}_big.png"></p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+				</div>
+			</div>
+			<div class="row">
+				<div ng-repeat="x in mob_placeholder track by $index" class="col-xs-4" ng-hide="$index >= monster_amount">
+					<div class="jumbotron red"></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-12">
+					<p><b>Gegen wie viele Monster willst du Kämpfen?</b></p>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-6">
+					<a class="btn red" ng-click="startBattle()">Kampf starten</a><br></br>
+				<!--<b>Der Kampf darf nicht länger als 5 Minuten dauern, sonst gilt er automatisch als Verloren</b>-->
+				</div>
+
+				<div class="col-xs-6">
+					<div class="input-group">
+						<span class="input-group-addon" ng-click="removeMonster()">-</span>
+						<input type="text" class="form-control" ng-model="monster_amount"></input>
+						<span class="input-group-addon red" ng-click="addMonster()">+</span>
+					</div>
+				</div>
+				<div class="col-xs-12">
+					<h3>EXP Bonus: <b>{{monster_amount}}x</b></h3>
+				</div>
+			</div>
+		</div>
+		
+		<div ng-hide="player.BattleId == null">
+			<!--<h2>5min verbleibend</h2>-->
+			<div class="row">
+				<div class="col-xs-4">
+					<a class="btn red" ng-click="syncMonsters()">
+						<span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> Update
+					</a>
+				</div>
+				<div class="col-xs-8">
+					<p><b>Klick auf das Monster das du Angreifen willst.</b></p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<div 
+						ng-repeat="x in monsters | orderBy:'id'" 
+						class="col-xs-4" 
+						ng-class="{red:player.next_target==x.id}"
+					>
+						<div
+							ng-hide="x.hp<=0"
+							ng-click="playTurn(x.id)"
+						>
+							<div class="progress">
+								<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="{{(100*x.hp)/x.max_hp}}"
+								aria-valuemin="0" aria-valuemax="100" style="width:{{(100*x.hp)/x.max_hp}}%">
+								{{Math.floor((100*x.hp)/x.max_hp)}}%
+								</div>
+							</div>
+							<div style="position: relative; left: 0; top: 0;">
+								<img 
+									style="position: relative; top: 0; left: 0;" 
+									src="img/mob/{{x.typ}}_big.png"
+								>
+								<img 
+									style="position: absolute; top: 32px; left: 0px;" 
+									ng-hide="x.item=='none'" 
+									src="img/item/{{x.item}}_big.png"
+								>
+								<div style="position: absolute; top: 45px; left: 32px;text-align:right;width:32px;">{{x.id}}</div>
+							</div>
+							
+						</div>
+						<div ng-show="$index <= monster_amount && x.hp<=0">
+							<h2>{{monster_amount*x.exp}} EXP</h2>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-xs-{{12/party.length}}" ng-repeat="x in party">
+					<img src="{{x.class}}_big.png">
+					<p>{{x.name}}</p>
+					<div class="progress">
+						<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{(100*x.hp)/x.max_hp}}"
+				aria-valuemin="0" aria-valuemax="100" style="width:{{(100*x.hp)/x.max_hp}}%">
+						{{x.hp}} von {{x.max_hp}}
+						</div>
+					</div>
+					<div class="progress">
+						<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="{{(100*x.sp)/x.max_sp}}"
+				aria-valuemin="0" aria-valuemax="100" style="width:{{(100*x.sp)/x.max_sp}}%">
+						{{(100*x.sp)/x.max_sp}}%
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-12" ng-class="{red:active_skill=='none'}" ng-click="setActiveSkill('none')">
+				<p><b>normaler Angriff</b></p>
+			</div>
+			<div src="row" class="col-xs-12" ng-repeat="x in skills track by $index" ng-class="{red:active_skill==x.type}" ng-click="setActiveSkill(x.type)">
+				<div class="col-xs-5">
+					<p><b>{{x.name}}</b></p>
+				</div>
+				<div class="col-xs-7">
+					<p>{{x.desc}}</p>
+				</div>
+			</div>
+			<div src="row">
+				<div class="col-xs-12">
+					<!--<p>Wechselt man ins Startmenü, so gilt der Kampf automatisch als verloren.</p>-->
+					<h1>Battlelog</h2>
+					<p 
+						ng-repeat="x in battlelog | orderBy:'id'" 
+						style="opacity:{{1-($index)*0.05}}"
+					>
+						<span ng-show="x.team=='party'">
+							<img src="p_{{x.dice_1}}.png"><img src="e_{{x.dice_2}}.png">
+						</span>
+						<span ng-show="x.team=='monsters'">
+							<img src="e_{{x.dice_2}}.png"><img src="p_{{x.dice_1}}.png">
+						</span>
+						<span ng-show="x.type=='defeated'">
+							<b>{{x.name_1}}</b> hat {{x.name_2}} besiegt.
+						</span>
+						<span ng-show="x.type=='crited'">
+							<b>{{x.name_1}} trifft {{x.name_2}} KRITISCH und macht {{x.damage}} Schaden!!!</b>
+						</span>
+						<span ng-show="x.type=='hit'">
+							<b>{{x.name_1}}</b> trifft {{x.name_2}} und macht <b>{{x.damage}} Schaden.</b>
+						</span>
+						<span ng-show="x.type=='failed'">
+							<b>{{x.name_1}}</b> hat {{x.name_2}} verfehlt.
+						</span>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div ng-hide="page!='liga'">
+		<div class="jumbotron red">
+			<p> Platzhalter für Liga </p>
+		</div>
+	</div>
+	<div ng-hide="page!='chat'">
+		<div class="jumbotron red">
+			<p> Platzhalter für Chat </p>
+		</div>
+	</div>
+</div>

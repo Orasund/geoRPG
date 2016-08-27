@@ -1,0 +1,16 @@
+{
+  "hp_potion":
+  {
+    "name":"HP Trank",
+    "hp":50,
+    "sp":0,
+    "price":10
+  },
+  "sp_potion":
+  {
+    "name":"SP Trank",
+    "hp":0,
+    "sp":50,
+    "price":10
+  }
+}

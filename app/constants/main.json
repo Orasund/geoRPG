@@ -1,0 +1,19 @@
+{
+	"weighting":
+	{
+		"atk":1,
+		"def":1,
+		"hp":20
+	},
+	"start_stats":
+	{
+		"atk":3,
+		"def":1,
+		"hp":60
+	},
+	"start_stat_points":6,
+	"playerValue":7,
+	"RatValue":1,
+	"expForFristLevel": 30,
+	"expRaseInProcent": 0.5
+}

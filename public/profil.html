@@ -1,0 +1,171 @@
+<div class="container">	
+	<ul class="nav nav-tabs">
+		<li ng-class="{active:page=='character'}"><a ng-click="page='character'">Profil</a></li>
+		<li ng-class="{active:page=='items'}"><a ng-click="page='items'">Items</a></li>
+		<li ng-class="{active:page=='settings'}"><a ng-click="page='settings'">Einstellungen</a></li>
+	</ul>
+	<div ng-hide="page!='character'">
+		<div ng-hide="allUsers">
+			<div class="row">
+				<div class="col-xs-4">
+					<p><img src="{{player.class}}_big.png"></p>
+					<p><b>[LV {{player.lv}}] {{player.name}}</b></p>
+				</div>
+				<div class="col-xs-4">
+					<p>Gold: {{player.gold}}g</p>
+					<p>Angriff: {{player.atk}}</p>
+					<p>Verteid.: {{player.def}}</p>
+				</div>
+				<div class="col-xs-4">
+					<p>HP: {{player.max_hp}}</p>
+					<p>SP: {{player.max_sp}}</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="progress">
+						<div 
+							class="progress-bar progress-bar-warning" 
+							role="progressbar" aria-valuenow="{{(100*player.exp)/player.next_level}}"
+							aria-valuemin="0" aria-valuemax="100" 
+							style="width:{{(100*player.exp)/player.next_level}}%"
+						>
+							{{player.exp}} von {{player.next_level}} EXP
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-6">
+					<p><b>Eigenschaften</b></p>
+				</div>
+				<div class="col-xs-6">
+					<p ng-hide="x.remaining_points<1">
+						<span class="label label-default">{{player.remaining_points}}</span> verbleibend
+					</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-4">
+					<p>Stärke:</p>
+				</div>
+				<div class="col-xs-2">
+					<p>{{player.str}}</p>
+				</div>
+				<div class="col-xs-6">
+					<a 
+						type="button" class="btn btn-success" 
+						ng-hide="player.remaining_points<1"
+						ng-click="spendPoint('str')"
+					>
+						<span 
+							class="glyphicon glyphicon glyphicon-arrow-up" 
+							aria-hidden="true"
+						></span>
+					</a>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-4">
+					<p>Kondition:</p>
+				</div>
+				<div class="col-xs-2">
+					<p>{{player.con}}</p>
+				</div>
+				<div class="col-xs-6">
+					<a 
+						type="button" class="btn btn-success" 
+						ng-hide="player.remaining_points<1"
+						ng-click="spendPoint('con')"
+					>
+						<span 
+							class="glyphicon glyphicon glyphicon-arrow-up" 
+							aria-hidden="true"
+						></span>
+					</a>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-4">
+					<p>Ausdauer:</p>
+				</div>
+				<div class="col-xs-2">
+					<p>{{player.vit}}</p>
+				</div>
+				<div class="col-xs-6">
+					<a 
+						type="button" class="btn btn-success" 
+						ng-hide="player.remaining_points<1"
+						ng-click="spendPoint('vit')"
+					>
+						<span 
+							class="glyphicon glyphicon glyphicon-arrow-up" 
+							aria-hidden="true"
+						></span>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div ng-hide="page!='items'">
+		<div ng-hide="consumables.length==0" class="row">
+			<div class="col-xs-12">
+				<p><b>Tränke</b></p>
+			</div>
+		</div>
+		<div ng-hide="consumables.length==0" class="row">
+			<div 
+				class="col-xs-3" 
+				ng-repeat="x in consumables track by $index"
+				ng-click="useConsumable(x.id)"
+			>
+				<p>
+					<img src="img/item/{{x.type}}_big.png"><br>
+					{{x.name}}
+				</p>
+			</div>
+		</div>
+		<div ng-hide="misc.length==0" class="row">
+			<div class="col-xs-12">
+				<p><b>Resourcen</b></p>
+			</div>
+		</div>
+		<div ng-hide="misc.length==0" class="row">
+			<div 
+				class="col-xs-3" 
+				ng-repeat="x in misc track by $index"
+				ng-click="useMisc(x.id)"
+			>
+				<p>
+					<div style="position: relative; left: 0; top: 0;">
+						<img 
+							style="position: relative; top: 0; left: 0;" 
+							src="img/item/{{x.type}}_big.png"
+						>
+						<div style="position: absolute; top: 24px; left: 16px;text-align:right;width:16px;"><b>{{x.amount}}</b></div>
+					</div><br>
+					{{x.name}}
+				</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+				<p><b>Shop</b></p>
+			</div>
+		</div>
+		<div class="row">
+			<div 
+				class="col-xs-3" 
+				ng-repeat="x in ['hp_potion','sp_potion'] track by $index"
+				ng-click="buyConsumable(x)"
+			>
+				<p>
+					<img src="img/item/{{x}}_big.png">10g
+					</p>
+			</div>
+		</div>
+	</div>
+	<div class="jumbotron green" ng-hide="page!='settings'">
+		<p> Platzhalter für Einstellungen </p>
+	</div>
+</div>

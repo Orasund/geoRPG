@@ -1,0 +1,188 @@
+<div class="container">	
+	<div class="row" ng-hide="page!='home'">
+		<div class="col-xs-6">
+			<div class="jumbotron orange" ng-click="page='tavern-list'">
+				<h3>Taverne</h3>
+				<p class="hidden-xs">rekrutiere Spieler und erhalte Quests</p>
+			</div>
+		</div>
+		<div class="col-xs-6">
+			<div class="jumbotron red" ng-click="page='battlezone-list'">
+				<h3>Kampfzone</h3>
+				<p class="hidden-xs">kämpfe gegen Monster und fordere andere Spieler heraus</p>
+			</div>
+		</div>
+		<div class="col-xs-6">
+			<a href="#quest">
+				<div class="jumbotron blue">
+					<h3>Quest</h3>
+					<p class="hidden-xs">Quests und Gruppen verwalten</p>
+				</div>
+			</a>
+		</div>
+		<div class="col-xs-6">
+			<a href="#character">
+				<div class="jumbotron green">
+					<h3>Profil</h3>
+					<p class="hidden-xs">Einstellungen um das Spielerlebnis zu verschönern</p>
+				</div>
+			</a>
+		</div>
+	</div>
+
+<!---------------------------------------------------------
+Tavern-list
+---------------------------------------------------------->
+	<div id="tavern-list" ng-hide="page!='tavern-list'">
+		<p><a class="btn orange" href="#tavern">Eintreten</a></p>
+		<div class="panel panel-orange">
+      <div class="panel-heading orange"><b>Hackerspace</b></div>
+      <div class="panel-body">
+        <div ng-hide="near(48.305867, 14.283854)">
+          <p>Du bist gerade nicht in der Nähe</p>
+          <p>
+            <a class="btn orange" data-toggle="collapse" data-target="#map_raabheim">Standord anzeigen</a>
+            <div id="map_raabheim"  class="collapse">
+              <img src="map_raabheim.png">
+            </div>
+          </p>
+        </div>
+        <div ng-show="near(48.305867, 14.283854)">
+          <p><a class="btn orange" href="#tavern">Eintreten</a></p>
+        </div>
+      </div>
+    </div>
+		
+    <div class="panel panel-orange">
+      <div class="panel-heading orange"><b>Raabheim</b></div>
+      <div class="panel-body">
+        <div ng-hide="near(48.341662,14.284451299999999)">
+          <p>Du bist gerade nicht in der Nähe</p>
+          <p>
+            <a class="btn orange" data-toggle="collapse" data-target="#map_raabheim">Standord anzeigen</a>
+            <div id="map_raabheim"  class="collapse">
+              <img src="map_raabheim.png">
+            </div>
+          </p>
+        </div>
+        <div ng-show="near(48.341662,14.284451299999999)">
+          <p><a class="btn orange" href="#tavern">Eintreten</a></p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="panel panel-orange">
+      <div class="panel-heading orange"><b>Mensa</b></div>
+      <div class="panel-body">
+        <div ng-hide="near(48.337557, 14.321968)">
+          <p>Du bist gerade nicht in der Nähe</p>
+          <p>
+            <a class="btn orange" data-toggle="collapse" data-target="#map_mensa">Standord anzeigen</a>
+            <div id="map_mensa" class="collapse">
+              <img src="map_mensa.png">
+            </div>
+          </p>
+        </div>
+        <div ng-show="near(48.337557, 14.321968)">
+          <p><a class="btn orange" href="#taverne">Eintreten</a></p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="panel panel-orange">
+      <div class="panel-heading orange"><b>Cafe Sassi</b></div>
+      <div class="panel-body">
+        <img style="width:100%" src="img/sassi_big.png">
+        <div ng-hide="near(48.337109, 14.317658)">
+          <p>Du bist gerade nicht in der Nähe</p>
+          <p>
+            <a class="btn orange" data-toggle="collapse" data-target="#map_sassi">Standord anzeigen</a>
+            <div id="map_sassi"  class="collapse">
+              <img src="map_sassi.png">
+            </div>
+          </p>
+        </div>
+        <div ng-show="near(48.337109, 14.317658)">
+          <p><a class="btn orange" href="#taverne">Eintreten</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+ <!---------------------------------------------------------
+Battlezone-list
+----------------------------------------------------------> 
+  <div id="battlezone-list" ng-hide="page!='battlezone-list'">
+		<p><a class="btn red" href="#battlezone">Eintreten</a></p>
+		<div class="panel panel-red">
+      <div class="panel-heading red"><b>Bürgerstraße</b></div>
+      <div class="panel-body">
+        <div ng-hide="near(48.298257, 14.291413)">
+          <p>Du bist gerade nicht in der Nähe</p>
+          <p>
+            <a class="btn red" data-toggle="collapse" data-target="#map_raabheim">Standord anzeigen</a>
+            <div id="map_raabheim"  class="collapse">
+              <img src="map_raabheim.png">
+            </div>
+          </p>
+        </div>
+        <div ng-show="near(48.298257, 14.291413)">
+          <p><a class="btn red" href="#battlezone">Eintreten</a></p>
+        </div>
+      </div>
+    </div>
+		
+    <div class="panel panel-red">
+      <div class="panel-heading red"><b>Lernraum SP2</b></div>
+      <div class="panel-body">
+        <div ng-hide="near(48.341662,14.284451299999999)">
+          <p>Du bist gerade nicht in der Nähe</p>
+          <p>
+            <a class="btn red" data-toggle="collapse" data-target="#map_raabheim">Standord anzeigen</a>
+            <div id="map_raabheim"  class="collapse">
+              <img src="map_raabheim.png">
+            </div>
+          </p>
+        </div>
+        <div ng-show="near(48.341662,14.284451299999999)">
+          <p><a class="btn red" href="#battlezone">Eintreten</a></p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="panel panel-red">
+      <div class="panel-heading red"><b>Lernbereich Höhrsaaltrakt</b></div>
+      <div class="panel-body">
+        <div ng-hide="near(48.337557, 14.321968)">
+          <p>Du bist gerade nicht in der Nähe</p>
+          <p>
+            <a class="btn red" data-toggle="collapse" data-target="#map_mensa">Standord anzeigen</a>
+            <div id="map_mensa" class="collapse">
+              <img src="map_mensa.png">
+            </div>
+          </p>
+        </div>
+        <div ng-show="near(48.337557, 14.321968)">
+          <p><a class="btn red" href="#taverne">Eintreten</a></p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="panel panel-red">
+      <div class="panel-heading red"><b>Grünfläche beim Uniteich</b></div>
+      <div class="panel-body">
+        <div ng-hide="near(48.337109, 14.317658)">
+          <p>Du bist gerade nicht in der Nähe</p>
+          <p>
+            <a class="btn red" data-toggle="collapse" data-target="#map_sassi">Standord anzeigen</a>
+            <div id="map_sassi"  class="collapse">
+              <img src="map_sassi.png">
+            </div>
+          </p>
+        </div>
+        <div ng-show="near(48.337109, 14.317658)">
+          <p><a class="btn red" href="#taverne">Eintreten</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

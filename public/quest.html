@@ -1,0 +1,116 @@
+<div class="container">	
+	<ul class="nav nav-tabs">
+		<li ng-class="{active:page=='quests'}"><a ng-click="page='quests'">Quests</a></li>
+		<li ng-class="{active:page=='group'}"><a ng-click="page='group'">Gruppe</a></li>
+		<li ng-class="{active:page=='chat'}"><a ng-click="page='chat'">Chat</a></li>
+	</ul>
+	<div ng-hide="page!='quests'">
+		<h2>Party-Quests</h2>
+		<div class="panel panel-blue">
+			<div class="panel-heading blue"><b>Der Zauberer im TNF-Turm</b></div>
+			<div class="panel-body">
+				<p>Ein Zauberer haust im TNF-Turm, es wird Zeit ihn von dort zu vertreiben</p>
+				<p>Dauer: ca. 20 Minuten</p>
+				<p>Empfohlenes Level: 5</p>
+				<p>Bezahlung: 20G</p>
+				<p><a class="btn blue">Abbrechen</a></p>
+			</div>
+			<div class="panel-footer blue">
+				<a data-toggle="collapse" data-target="#quest_11234_comments">
+					2 Kommentare
+				</a> 
+			</div>
+			<div class="panel-body collapse" id="quest_11234_comments">
+				<p>
+					<b>Kommentar verfassen</b>
+					<textarea></textarea> <a class="btn blue">Absenden</a>
+				</p>
+				<p>
+					<b>RandomPlayer234</b><br>
+					Ein netter kleiner Zeitvertreib, eigent sich hervorragend während man Übungszettel macht.
+				</p>
+				<p>
+					<b>RandomPlayer093</b><br>
+					Mit einer Hand voll Heiltränke oder einem Heiler kann man die Quest auch auf Level 3 schaffen.
+				</p>
+			</div>
+		</div>
+		<h2>Offene Gruppen-Quests</h2>
+		<div class="panel panel-blue">
+			<div class="panel-heading blue"><b>Das Monster vom Uniteich</b></div>
+			<div class="panel-body">
+				<p>Es wird gemunkeld, dass ein Monster im Uniteich haust</p>
+				<p>Dauer: ca. 15 Minuten</p>
+				<p>Empfohlenes Level: 2</p>
+				<p>Bezahlung: 40G</p>
+				<p><a class="btn blue">Abbrechen</a> <a class="btn blue">Als Party annehmen</a></p>
+			</div>
+			<div class="panel-footer blue">
+				<a data-toggle="collapse" data-target="#quest_11234_comments">
+					0 Kommentare
+				</a> 
+			</div>
+			<div class="panel-body collapse" id="quest_11234_comments">
+				<p>
+					<b>Kommentar verfassen</b>
+					<textarea></textarea> <a class="btn blue">Absenden</a>
+				</p>
+			</div>
+		</div>
+	</div>
+	<div ng-hide="page!='group'">
+		
+		<div class="row">
+			<!--<div class="col-xs-12">
+			<h2>Einladungen</h2>
+			</div>
+			<div class="col-xs-6">
+				<img src="fighter_big.png"><br>
+				<b>RandomPlayer033</b><br>
+				Lv. 4<br>
+				 <div class="btn-group">
+					<button type="button" class="btn btn-default"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+					<button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
+				</div>
+			</div>-->
+			<div class="col-xs-12">
+					<h2>Party <a class="btn btn-primary" ng-click="leaveParty()">Verlassen</a></h2>
+			</div>
+			
+			<div class="col-xs-6" ng-repeat="x in party">
+				<img src="{{x.class}}_big.png"><br>
+				<b>Lv.{{x.lv}} {{x.name}}</b><br>
+				<div class="progress">
+					<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{(100*x.hp)/x.max_hp}}"
+			aria-valuemin="0" aria-valuemax="100" style="width:{{(100*x.hp)/x.max_hp}}%">
+					{{(100*x.hp)/x.max_hp}}%
+					</div>
+				</div>
+				<div class="progress">
+					<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="{{(100*x.sp)/x.max_sp}}"
+			aria-valuemin="0" aria-valuemax="100" style="width:{{(100*x.sp)/x.max_sp}}%">
+					{{(100*x.sp)/x.max_sp}}%
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-12">
+				<h2>Gruppe</h2>
+			</div>
+			<div 
+				class="col-xs-4" 
+				ng-repeat="x in users track by $index" 
+				ng-hide="x.id == player.id || x.PartyId == player.PartyId"
+			>
+				<p><img src="{{x.class}}_big.png"></p>
+				<p><b>{{x.name}}</b></p>
+				<p>
+					<span ng-hide="x.PartyId == player.PartyId"><a class="btn btn-success" ng-click="sendPartyInvite(x.id)">einladen</a></span>
+					<span ng-show="x.PartyId == player.PartyId"><b>In deiner Party</b></span>
+				</p>
+			</div>
+		</div>
+	</div>
+	<div class="jumbotron blue" ng-hide="page!='chat'">
+		<p> Platzhalter für Chat </p>
+	</div>
+</div>

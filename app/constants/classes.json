@@ -1,0 +1,56 @@
+{
+	"knight":
+	{
+		"name":"Ritter",
+		"skill":
+		{
+			"solo":{
+				"name":"Schildstoß",
+				"desc":"macht Schaden in der Höhe des Verteidigungs-Werts.",
+				"cost":10
+			},
+			"party":{
+				"name":"Schutz",
+				"desc":"setzt eine Runde aus, steckt 50% des Schadens deiner Freunde ein.",
+				"cost":20
+			}
+		},
+    "stat":"con"
+	},
+	"fighter":
+	{
+		"name":"Kämpfer",
+		"skill":
+		{
+			"solo":{
+				"name":"Starker Schlag",
+				"desc":"verursacht 150% Schaden",
+				"cost":10
+			},
+			"party":{
+				"name":"Kriegsschrei",
+				"desc":"erhöht die ATK aller Freunde",
+				"cost":20
+			}
+		},
+    "stat":"str"
+	},
+	"mage":
+	{
+		"name":"Zauberer",
+		"skill":
+		{
+			"solo":{
+				"name":"Feuerwand",
+				"desc":"Schadet alle Gegner mit 50% des normalen Schadens",
+				"cost":10
+			},
+			"party":{
+				"name":"Heilung",
+				"desc":"heilt alle Freunde.",
+				"cost":20
+			}
+		},
+    "stat":"wit"
+	}
+}
